@@ -1,0 +1,17 @@
+spring:
+  port: 8080
+  application:
+    name: FILTERS-AND-SEARCH
+  datasource:
+    url: jdbc:mysql://localhost:3306/jse_company
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show_sql: true
+logging:
+  level:
+    root: INFO
+  pattern:
+    console: "[${spring.application.name}] %msg%n"
