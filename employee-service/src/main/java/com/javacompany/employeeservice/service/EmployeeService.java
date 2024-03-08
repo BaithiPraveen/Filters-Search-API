@@ -23,12 +23,12 @@ public class EmployeeService {
 
     public Page<Employee> getAllEmployeesByOneSearch(SpecificationInput specificationInput) {
         Pageable pageable = getPageableResponse(specificationInput.getPageRequest());
-        return employeeRepository.findAll(employeeEmployeeSpecification.getEmployeeSpecification(specificationInput), pageable);
+        return employeeRepository.findAll(employeeEmployeeSpecification.getFilterSpecification(specificationInput), pageable);
     }
 
     public Page<Employee> getAllEmployeesByOneSearch(SpecificationInputList specificationInputList) {
         Pageable pageable = getPageableResponse(specificationInputList.getPageRequest());
-        return employeeRepository.findAll(employeeEmployeeSpecification.getEmployeeSpecificationForList(specificationInputList), pageable);
+        return employeeRepository.findAll(employeeEmployeeSpecification.getFilterSpecificationForList(specificationInputList), pageable);
     }
 
 

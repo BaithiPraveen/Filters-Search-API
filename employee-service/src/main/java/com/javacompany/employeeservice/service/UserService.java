@@ -21,12 +21,12 @@ public class UserService {
 
     public Page<User> getAllUserByOneSearch(SpecificationInput specificationInput) {
         Pageable pageable = getPageableResponse(specificationInput.getPageRequest());
-        return userRepository.findAll(userSpecification.getEmployeeSpecification(specificationInput), pageable);
+        return userRepository.findAll(userSpecification.getFilterSpecification(specificationInput), pageable);
     }
 
     public Page<User> getAllUserByOneSearch(SpecificationInputList specificationInputList) {
         Pageable pageable = getPageableResponse(specificationInputList.getPageRequest());
-        return userRepository.findAll(userSpecification.getEmployeeSpecificationForList(specificationInputList), pageable);
+        return userRepository.findAll(userSpecification.getFilterSpecificationForList(specificationInputList), pageable);
     }
 
 }

@@ -16,11 +16,11 @@ import java.util.List;
 @Service
 @Slf4j
 public class FilterSpecification<T> {
-    public Specification<T> getEmployeeSpecificationForList(SpecificationInputList specificationInputList) {
+    public Specification<T> getFilterSpecificationForList(SpecificationInputList specificationInputList) {
         String operationType = specificationInputList.getOperationType();
         List<SpecificationInput> specificationInputLists = specificationInputList.getSpecifications();
         List<Specification<T>> specifications = specificationInputLists.stream()
-                .map(this::getEmployeeSpecification)
+                .map(this::getFilterSpecification)
                 .toList();
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = specifications.stream()
@@ -38,7 +38,7 @@ public class FilterSpecification<T> {
         };
     }
 
-    public Specification<T> getEmployeeSpecification(SpecificationInput specificationInput) {
+    public Specification<T> getFilterSpecification(SpecificationInput specificationInput) {
         return (root, query, criteriaBuilder) -> {
             String operatorName = specificationInput.getOperatorName().toUpperCase();
             String columnName = specificationInput.getColumnName();
@@ -79,7 +79,7 @@ public class FilterSpecification<T> {
                     return criteriaBuilder.between(root.get(columnName), betweenValuesArray[0], betweenValuesArray[1]);
                 case "DATES_BETWEEN":
                     log.info("✅ cursor in DATES_BETWEEN operation : ⬇");
-                    String[] dates = specificationInput.getValue().split(",");
+                    String[] dates = value.split(",");
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSS");
                     Date startDate, endDate;
                     try {
