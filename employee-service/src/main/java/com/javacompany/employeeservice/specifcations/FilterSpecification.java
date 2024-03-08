@@ -2,6 +2,7 @@ package com.javacompany.employeeservice.specifcations;
 
 import com.javacompany.employeeservice.dto.SpecificationInput;
 import com.javacompany.employeeservice.dto.SpecificationInputList;
+import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Predicate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
